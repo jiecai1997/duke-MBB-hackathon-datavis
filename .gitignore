@@ -1,2 +1,2 @@
-data_raw/
-sql/test*.sql
+/data_raw
+/sql/test*.sql
