@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
-<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/radar-chart.css">
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 <head>
   <style>
   body {
@@ -33,32 +34,50 @@
 
 </head>
 <body>
-  <h1>Duke VS Opponent Basketball Average Stats (2018)</h1>
-  <p>
-    <button onclick='showRadar()' class="btn btn-default" style="width:200px;height:50px;">Generate</button>
-  </p>
-  <p>
-    Boston College,
-    Elon,
-    Evansville,
-    Florida,
-    Florida State,
-    Furman,
-    Indiana,
-    Miami,
-    Michigan State,
-    N.C. State,
-    Notre Dame,
-    Pittsburgh,
-    Portland State,
-    Saint Francis (Pa.),
-    South Dakota,
-    Southern,
-    Texas,
-    Utah Valley,
-    Virginia,
-    Wake Forest
-  </p>
+  <h1 class = "text-center">Duke VS Opponent Basketball Average Stats (2018)</h1>
+  <div class = "row">
+    <div class = "col">
+    </div>
+    <div class = "col-8 text-center">
+      Click the generate button and type in an opponent school to generate a radar chart. The chart compares average game statistics between Duke and the target opponent school selected within the 2018 Season.
+    </div>
+    <div class = "col">
+    </div>
+  </div>
+
+  <div class = "text-center">
+    <button onclick='showRadar()' class="btn btn-primary" style="width:200px;height:50px;margin:50px">Generate</button>
+  </div>
+  <div class = "row">
+    <div class = "col">
+    </div>
+    <div class = "col-5 text-center font-italic">
+      Boston College,
+      Elon,
+      Evansville,
+      Florida,
+      Florida State,
+      Furman,
+      Indiana,
+      Miami,
+      Michigan State,
+      N.C. State,
+      Notre Dame,
+      Pittsburgh,
+      Portland State,
+      Saint Francis (Pa.),
+      South Dakota,
+      Southern,
+      Texas,
+      Utah Valley,
+      Virginia,
+      Wake Forest
+    </div>
+    <div class = "col">
+    </div>
+  </div>
+
+
 
 
   <script type="text/javascript">
@@ -597,7 +616,7 @@ function usersIput(){
 }
 
 //	var oppTeam = "Notre Dame"; // custom input
-var oppTeam = prompt("Type in an opponent");
+var oppTeam = prompt("Type in an opponent: Boston College, Elon, Evansville, Florida, Florida State, Furman, Indiana, Miami, Michigan State, N.C. State, Notre Dame, Pittsburgh, Portland State, Saint Francis (Pa.), South Dakota, Southern, Texas, Utah Valley, Virginia, Wake Forest");
 var parsedData = [ ["Duke"], [oppTeam] ];
 
 Object.keys(allData).map(function(mainData, index) {
@@ -683,7 +702,7 @@ function showRadar(){
 </script>
 
 
-<div id="chart-container"></div>
+<div id="chart-container" class = "text-center"></div>
 <script type="text/javascript">
 //RadarChart.defaultConfig.levelTick = true;
 </script>
