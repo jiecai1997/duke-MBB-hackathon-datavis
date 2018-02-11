@@ -58,10 +58,7 @@
     </div>
   </div>
 
-  <div class = "text-center">
-    <button onclick='showRadar()' class="btn btn-primary" style="width:200px;height:50px;margin:50px">Generate</button>
-  </div>
-  <div class = "row">
+  <div class = "row" style = "margin-top:30px;">
     <div class = "col">
     </div>
     <div class = "col-5 text-center font-italic">
@@ -90,14 +87,18 @@
     </div>
   </div>
 
-
-
+  <div class = "text-center">
+    <button onclick='showRadar()' class="btn btn-primary" style="width:200px;height:50px;margin:30px">Generate</button>
+  </div>
 
 <script type="text/javascript">
     function showRadar(){
-      
+
       getData( (allData) => {
-        var oppTeam = prompt("Type in an opponent");
+        //var oppTeams = ["Boston College", "Elon", "Evansville", "Florida", "Florida State", "Furman", "Indiana", "Miami", "Michigan State", "N.C. State", "Notre Dame", "Pittsburgh", "Portland State", "Saint Francis (Pa.)", "South Dakota", "Southern", "Texas", "Utah Valley", "Virginia", "Wake Forest"];
+
+        var oppTeam = prompt("Type in an opponent: \n\nBoston College, Elon, Evansville, Florida, Florida State, Furman, Indiana, Miami, Michigan State, N.C. State, Notre Dame, Pittsburgh, Portland State, Saint Francis (Pa.), South Dakota, Southern, Texas, Utah Valley, Virginia, Wake Forest");
+
         var parsedData = [ ["Duke"], [oppTeam] ];
         allDataDuke = allData['duke-stats-1y'];
         allDataOpp = allData['opp-stats-1y'];
@@ -115,13 +116,14 @@
                         parsedData[0].push(currentArr['fg3_avg']);
                         parsedData[0].push(currentArr['ft_avg']);
                         parsedData[0].push(currentArr['stl_avg']);
+                        parsedData[0].push(currentArr['oreb_avg']);
                         parsedData[0].push(currentArr['dreb_avg']);
                         count++;
                     }
                 });
             }
 	   });
-          
+
         Object.keys(allDataOpp).map(function(mainData, index) {
             let currentArr = allDataOpp[mainData];
             for(var i in currentArr) {
@@ -135,21 +137,22 @@
                         parsedData[1].push(currentArr['fg3_avg']);
                         parsedData[1].push(currentArr['ft_avg']);
                         parsedData[1].push(currentArr['stl_avg']);
+                        parsedData[1].push(currentArr['oreb_avg']);
                         parsedData[1].push(currentArr['dreb_avg']);
                         count++;
                     }
                 });
             }
 	   });
-          
-		let dataIn = [ 
-		 	["Name", "Asissts Avg", "Blocks Avg", "Field Goals Avg", "3 Pointers Avg", "Free Throws Avg", "Steals Avg", "Defensive Rebounds Avg"],
+
+		let dataIn = [
+		 	["Name", "Asissts Avg", "Blocks Avg", "Field Goals Avg", "3 Pointers Avg", "Free Throws Avg", "Steals Avg", "Offensive Rebounds Avg", "Defensive Rebounds Avg"],
 		 	parsedData[0],
 		 	parsedData[1],
 		  ]
 		var data = [];
         var chart = RadarChart.chart();
-  
+
           let width = 600;
           let height = 600;
 
@@ -194,16 +197,16 @@
         var divVal = document.getElementById('chart-container');
         animate(divVal,600);
     });
-      
-    
+
+
   }
-    
+
     function getData(callback){
         // Initialize Firebase
-          
-            
+
+
             var database = firebase.database();
-            
+
             var ref = firebase.database().ref();
 
             ref.on("value", function(snapshot) {
@@ -214,7 +217,7 @@
                console.log("Error: " + error.code);
             });
     }
-  
+
 </script>
 
 
